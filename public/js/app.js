@@ -27890,7 +27890,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return _ctx.inactive(post.id);
       }, ["prevent"]),
       "class": "cursor-pointer text-indigo-600 hover:text-indigo-900"
-    }, " Make Inactive ", 8
+    }, " Unapprove ", 8
     /* PROPS */
     , _hoisted_22)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
       key: 1,
@@ -27898,7 +27898,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return _ctx.active(post.id);
       }, ["prevent"]),
       "class": "text-indigo-600 hover:text-indigo-900 cursor-pointer"
-    }, " Make Active ", 8
+    }, " Approve ", 8
     /* PROPS */
     , _hoisted_23)), _hoisted_24, _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
       onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {

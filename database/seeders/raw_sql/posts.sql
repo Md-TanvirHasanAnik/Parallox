@@ -1,0 +1,4 @@
+
+
+INSERT INTO `posts` (`id`, `title`, `description`, `image`, `status`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 'Test Title For Post', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget massa id quam aliquam elementum nec lobortis lacus. Mauris vestibulum venenatis neque, vitae tempus lacus aliquet quis. Integer rhoncus vestibulum orci. Morbi felis ex, aliquet ac eros et, sagittis scelerisque lectus. Mauris non massa elit. Integer congue, orci vel laoreet mattis, nibh nibh sagittis eros, at accumsan leo dolor in lectus. Nam arcu elit, hendrerit ut venenatis eget, ultrices nec justo. Morbi iaculis nunc quam, non cursus massa lobortis at. Nullam a eros convallis, fringilla nisl vel, sollicitudin mauris', '/upload/u_id_2_1642084956.jpg', 1, 2, '2022-01-13 08:42:36', '2022-01-13 10:25:23');

@@ -48,8 +48,8 @@
 
               <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium ">
                   <a @click.prevent="view(post.id)" class="cursor-pointer text-pink-600 hover:text-pink-900"> <button> View | </button></a>
-                  <a v-if="post.status == 1" @click.prevent="inactive(post.id)" class="cursor-pointer text-indigo-600 hover:text-indigo-900"> Make Inactive </a>
-                    <a v-else @click.prevent="active(post.id)" class="text-indigo-600 hover:text-indigo-900 cursor-pointer"> Make Active </a>
+                  <a v-if="post.status == 1" @click.prevent="inactive(post.id)" class="cursor-pointer text-indigo-600 hover:text-indigo-900"> Unapprove </a>
+                    <a v-else @click.prevent="active(post.id)" class="text-indigo-600 hover:text-indigo-900 cursor-pointer">  Approve </a>
                 <span>|</span> <a @click.prevent="deletePost(post.id)" class="text-red-600 hover:text-red-900 cursor-pointer"> Delete </a>
               </td>
             </tr>

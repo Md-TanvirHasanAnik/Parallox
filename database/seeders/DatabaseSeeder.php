@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -46,6 +47,12 @@ class DatabaseSeeder extends Seeder
             'email' => "user2@parallaxblog.com",
             'password' => bcrypt('aaaaaaaa')
         ]);
+
+        $sql_path = base_path('database/seeders/raw_sql/posts.sql');
+        $sql_path1 = base_path('database/seeders/raw_sql/comments.sql');
+
+        DB::unprepared(file_get_contents($sql_path));
+        DB::unprepared(file_get_contents($sql_path1));
 
     }
 }
