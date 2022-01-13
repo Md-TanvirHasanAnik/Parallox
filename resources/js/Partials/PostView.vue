@@ -16,10 +16,10 @@
             <template  v-for="(comment, place) in post.comments" :key="place">
             <div class="w-96 mx-auto" v-if="comment.parent_id == null">
                 <ul>
-                    <li class="text-left">{{ comment.comment }}
+                    <li class="text-left"><b>{{ comment.user_name }} :</b> {{ comment.comment }}
                         <ul class="text-left">
                             <li class="ml-5" v-for="reply in comment.replies">
-                                {{ reply.comment }}
+                                <b>{{ reply.user_name }} :</b> {{ reply.comment }}
                             </li>
                             <div class="flex">
                                 <input class="w-96 rounded" type="text" v-model="reply[index][place]">

@@ -45,10 +45,12 @@
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 {{ new Date(post.created_at).toLocaleString() }}
               </td>
+
               <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium ">
-                <a v-if="post.status == 1" @click.prevent="inactive(post.id)" class="cursor-pointer text-indigo-600 hover:text-indigo-900">Make Inactive </a>
-                <a v-else @click.prevent="active(post.id)" class="text-indigo-600 hover:text-indigo-900 cursor-pointer">Make Active </a>
-                <span>|</span> <a @click.prevent="deletePost(post.id)" class="text-red-600 hover:text-red-900 cursor-pointer">Delete</a>
+                  <a @click.prevent="view(post.id)" class="cursor-pointer text-pink-600 hover:text-pink-900"> <button> View | </button></a>
+                  <a v-if="post.status == 1" @click.prevent="inactive(post.id)" class="cursor-pointer text-indigo-600 hover:text-indigo-900"> Make Inactive </a>
+                    <a v-else @click.prevent="active(post.id)" class="text-indigo-600 hover:text-indigo-900 cursor-pointer"> Make Active </a>
+                <span>|</span> <a @click.prevent="deletePost(post.id)" class="text-red-600 hover:text-red-900 cursor-pointer"> Delete </a>
               </td>
             </tr>
 
@@ -74,14 +76,22 @@
     import "datatables.net-dt/js/dataTables.dataTables";
     import "datatables.net-dt/css/jquery.dataTables.min.css";
     import $ from "jquery";
+    import {Link} from "@inertiajs/inertia-vue3";
 
     export default defineComponent({
+        components: {
+            Link
+        },
         props: ['posts'],
 
         mounted: () => {
              $('#table_id').DataTable();
         },
         methods: {
+            view(id)
+            {
+                Inertia.get(route('posts.view', id))
+            },
             active(id)
             {
                 Inertia.post(route('posts.active', id))
@@ -92,7 +102,7 @@
             },
             deletePost(id)
             {
-              
+
                 Inertia.delete(route('posts.destroy', id),{
                     onSuccess: () => {
                         Swal.fire({

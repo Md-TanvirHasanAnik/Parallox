@@ -23,9 +23,10 @@ Route::middleware(['auth:sanctum', 'verified', 'active', 'admin.staff'])->group(
 
     Route::prefix('posts')->as('posts.')->group( function() {
         Route::get('/', [PostController::class , "index"])->name('index');
+        Route::get('/view/{id}' , [PostController::class , "view"])->name('view');
         Route::delete('/{id}', [PostController::class , "destroy"])->name('destroy');
         Route::post('/make-active/{id}', [PostController::class , "makeActive"])->name('active');
         Route::post('/make-inactive/{id}', [PostController::class , "makeInactive"])->name('inactive');
     });
-});    
+});
 

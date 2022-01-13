@@ -16,9 +16,15 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $posts = Post::all();
         return Inertia::render('Post' , [ 'posts' => $posts ] );
+    }
+
+    public function view($id){
+
+        $posts = Post::where('status' , 1)->with('comments.replies')->get();
+        return Inertia::render('PostDetails' , [ 'posts' => $posts ] );
     }
 
     /**
@@ -39,13 +45,13 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         Validator::make($request->all(), [
             'title' => ['required' , 'max:255' ],
             'description' => ['required'],
             'image' => ['required', 'mimes:jpeg,jpg,png', 'max:10000']
         ])->validate();
-        
+
         try {
             DB::beginTransaction();
             $fileName = "u_id_".auth()->id().'_'. time().'.'.$request->image->getClientOriginalExtension();
