@@ -19,13 +19,11 @@
 <script>
     import { defineComponent } from 'vue'
     import AppLayout from '@/Layouts/Admin/AppLayout.vue'
-    import Welcome from '@/Jetstream/Welcome.vue'
     import UserList from '@/Partials/UserList.vue'
 
     export default defineComponent({
         components: {
             AppLayout,
-            Welcome,
             UserList
         },
         props: ['users']

@@ -1,9 +1,9 @@
 <template>
       <div>
-        <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
+        <div class="pt-6 sm:px-20 bg-white border-b border-gray-200">
            <div class="text-center">
               <h1 class="font-bold text-2xl"> Create A Post </h1>
-              <form class="w-full max-w-6xl mx-auto my-5 bg-white p-5">
+              <form class="w-full max-w-6xl mx-auto mt-5 bg-white pt-5">
                   <jet-validation-errors class="mb-4" />
                   <div class="flex flex-wrap justify-center flex-col mx-auto mb-6">
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 mx-auto">

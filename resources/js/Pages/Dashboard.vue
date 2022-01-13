@@ -10,9 +10,11 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <post-create/>
+                    <post-view :posts="posts"/>
                 </div>
             </div>
         </div>
+        
     </app-layout>
 </template>
 
@@ -21,12 +23,15 @@
     import AppLayout from '@/Layouts/AppLayout.vue'
     import Welcome from '@/Jetstream/Welcome.vue'
     import PostCreate from '@/Partials/User/PostCreate.vue'
+    import PostView from '@/Partials/PostView.vue'
 
     export default defineComponent({
         components: {
             AppLayout,
             Welcome,
-            PostCreate
+            PostCreate,
+            PostView
         },
+        props: ['posts'],
     })
 </script>

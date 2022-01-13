@@ -10,7 +10,7 @@ class AdminController extends Controller
 {
     
     public function dashboard(){
-        $users = User::where('role' , User::Roles['User'])->get();
+        $users = User::whereIn('role' , [User::Roles['User'] , User::Roles['Staff']])->get();
         return Inertia::render('AdminDashboard' , ['users' => $users]);
     }
 
@@ -26,4 +26,19 @@ class AdminController extends Controller
         $user->update();
         return back()->withSuccess("done");
     }
+    public function makeUser($id){
+        $user = User::find($id);
+        $user->role = User::Roles['User'];
+        $user->update();
+        return back()->withSuccess("done");
+    }
+    public function makeStaff($id){
+        $user = User::find($id);
+        $user->role = User::Roles['Staff'];
+        $user->update();
+        return back()->withSuccess("done");
+    }
+
+
+
 }

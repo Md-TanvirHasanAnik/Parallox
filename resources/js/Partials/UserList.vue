@@ -13,9 +13,12 @@
                 Status
               </th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Role
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Created At
               </th>
-              <th scope="col" class="relative px-6 py-3">
+              <th v-if="$page.props.user.role == $page.props.roles.admin" scope="col" class="relative px-6 py-3">
                 <span class="sr-only">Edit</span>
               </th>
             </tr>
@@ -43,12 +46,23 @@
                   Inactive
                 </span>
               </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                 <span v-if="user.role == $page.props.roles.staff"  class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">
+                  Staff
+                </span>
+                <span v-if="user.role == $page.props.roles.user"  class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
+                  User
+                </span>
+               </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 {{ new Date(user.created_at).toLocaleString() }}
               </td>
-              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium ">
+              <td v-if="$page.props.user.role == $page.props.roles.admin" class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium ">
                 <a v-if="user.status == 1" @click.prevent="inactive(user.id)" class="cursor-pointer text-indigo-600 hover:text-indigo-900">Make Inactive</a>
-                <a v-else @click.prevent="active(user.id)" class="text-indigo-600 hover:text-indigo-900 cursor-pointer">Make Active</a>
+                <a v-else @click.prevent="active(user.id)" class="text-indigo-600 hover:text-indigo-900 cursor-pointer"> Make Active </a>
+                |    
+                <a v-if="user.role == $page.props.roles.user" @click.prevent="makeStaff(user.id)" class="cursor-pointer text-indigo-600 hover:text-indigo-900">Make Staff</a>
+                <a v-else @click.prevent="makeUser(user.id)" class="text-indigo-600 hover:text-indigo-900 cursor-pointer"> Make User</a>
               </td>
             </tr>
 
@@ -87,7 +101,16 @@
             inactive(id)
             {
                 Inertia.post(route('admin.user.make.inactive', id))
+            },
+            makeUser(id)
+            {
+                Inertia.post(route('admin.user.make.user', id))
+            },
+            makeStaff(id)
+            {
+                Inertia.post(route('admin.user.make.staff', id))
             }
+
         }
     })
 </script>
